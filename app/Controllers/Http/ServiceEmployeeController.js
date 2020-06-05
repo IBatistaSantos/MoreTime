@@ -75,6 +75,7 @@ const User = use('App/Models/User')
       price,
       info
     })
+    await service.load(['service'])
     return service
     } catch (error) {
       return response.status(401).send('Ocorreu um problema na criação da prestação de serviço')
