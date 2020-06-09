@@ -134,14 +134,8 @@ class AppointmentController {
           return response.status(401).send('Somente o cliente pode alterar o agendamento')
         }
 
-        const dataParsed = parseISO(date)
-
-        if (isBefore(dataParsed, new Date()) && !isToday(dataParsed)) {
-          return response.status(401).send('Essa data já passou')
-        }
-
         appointment.merge({
-          date: format(dataParsed, 'dd/MM/yyyy'),
+          date: date,
           timetable: timetable,
           status: status
       })
