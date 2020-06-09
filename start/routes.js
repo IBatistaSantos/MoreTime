@@ -18,3 +18,6 @@ Route.resource('businessHours', 'BusinessHourController').middleware('auth').api
 
 Route.post('forgotpassword', 'ForgotPasswordController.store')
 Route.put('resetepassword', 'ForgotPasswordController.update')
+
+Route.resource('scheduling', 'AppointmentController').except(['show']).middleware('auth').apiOnly()
+Route.get('appointment/today', 'AppointmentController.show').middleware('auth')

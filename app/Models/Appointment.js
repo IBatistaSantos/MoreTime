@@ -4,6 +4,17 @@
 const Model = use('Model')
 
 class Appointment extends Model {
+
+
+
+
+  client () {
+    return this.belongsTo('App/Models/User')
+  }
+
+  serviceEmployee () {
+    return this.belongsTo('App/Models/ServiceEmployee')
+  }
 }
 
 module.exports = Appointment

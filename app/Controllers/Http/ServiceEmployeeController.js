@@ -84,6 +84,7 @@ const User = use('App/Models/User')
 
 
   async show ({ params, request, response, view }) {
+
   }
 
 async update ({ params, request, response, auth }) {

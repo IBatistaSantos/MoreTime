@@ -5,6 +5,8 @@
 /** @typedef {import('@adonisjs/framework/src/View')} View */
 
 const Service = use('App/Models/Service')
+const ServiceEmployee = use('App/Models/ServiceEmployee')
+
 class ServiceController {
   async index () {
     const services = await Service.query()
@@ -19,8 +21,15 @@ class ServiceController {
     return user
   }
 
-  async show ({ params, request, response }) {
-
+  async show ({ params, response }) {
+    try {
+      const serviceEmployee = await ServiceEmployee.query()
+      .where('service_id', params.id)
+      .fetch()
+      return serviceEmployee
+    } catch (error) {
+      return response.status(404).send('Serviço não encontrado')
+    }
   }
 
   /**

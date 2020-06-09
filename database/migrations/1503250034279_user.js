@@ -14,6 +14,7 @@ class UserSchema extends Schema {
       table.string('token_password')
       table.string('token_created_at')
       table.boolean('status').defaultTo(true)
+      table.integer('file_id').unsigned().references('id').inTable('files')
       table.boolean('is_provider').defaultTo(false)
       table.timestamps()
     })

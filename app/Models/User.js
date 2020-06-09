@@ -21,7 +21,7 @@ class User extends Model {
     })
   }
   static get hidden () {
-    return ['created_at', 'updated_at', 'password']
+    return ['created_at', 'updated_at', 'password','token_password', 'token_created_at']
   }
 
 

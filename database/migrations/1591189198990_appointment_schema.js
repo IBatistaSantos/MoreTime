@@ -11,9 +11,9 @@ class AppointmentSchema extends Schema {
       table.integer('service_employee_id').unsigned().references('id').inTable('service_employees')
       table.string('timetable').notNullable()
       table.string('date').notNullable()
-      table.string('date_start').notNullable()
-      table.string('date_end').notNullable()
-      table.enu('status', ['toDo', 'concluded'])
+      table.string('date_start')
+      table.string('date_end')
+      table.enu('status', ['toDo', 'concluded']).defaultTo('toDo')
       table.timestamps()
     })
   }
