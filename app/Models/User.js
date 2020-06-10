@@ -19,6 +19,7 @@ class User extends Model {
         userInstance.password = await Hash.make(userInstance.password)
       }
     })
+    this.addGlobalScope(builder => builder.with('avatar'))
   }
   static get hidden () {
     return ['created_at', 'updated_at', 'password','token_password', 'token_created_at']
@@ -37,6 +38,10 @@ class User extends Model {
    */
   tokens () {
     return this.hasMany('App/Models/Token')
+  }
+
+  avatar() {
+    return this.belongsTo('App/Models/File')
   }
 }
 
