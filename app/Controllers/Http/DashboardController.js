@@ -1,6 +1,6 @@
 'use strict'
 const Appointment = use('App/Models/Appointment')
-const Database = use('Database')
+
 class DashboardController {
 
   async countToDo({auth}) {

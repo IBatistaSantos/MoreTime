@@ -15,7 +15,7 @@ Route.post('file/avatar', 'FileController.store').middleware('auth')
 Route.get('file/:name', 'FileController.show')
 
 
-Route.resource('services', 'ServiceController').apiOnly()
+Route.resource('services', 'ServiceController').apiOnly().middleware('auth')
 Route.resource('serviceEmployee', 'ServiceEmployeeController').middleware('auth').apiOnly()
 Route.resource('businessHours', 'BusinessHourController').middleware('auth').apiOnly()
 

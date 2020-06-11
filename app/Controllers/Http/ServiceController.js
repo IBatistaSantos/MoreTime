@@ -6,7 +6,7 @@
 
 const Service = use('App/Models/Service')
 const ServiceEmployee = use('App/Models/ServiceEmployee')
-
+const Appointment = use('App/Models/Appointment')
 class ServiceController {
   async index () {
     const services = await Service.query()
@@ -21,14 +21,16 @@ class ServiceController {
     return user
   }
 
-  async show ({ params, response }) {
+  async show ({ params, response, auth }) {
     try {
       const serviceEmployee = await ServiceEmployee.query()
       .where('service_id', params.id)
+      .where('user_id', '!=' , auth.user.id)
       .fetch()
+
       return serviceEmployee
     } catch (error) {
-      return response.status(404).send('Serviço não encontrado')
+      return response.status(404).send(error)
     }
   }
 
