@@ -36,7 +36,11 @@ class BusinessHourController {
     }
 
     try {
-      const businesshourExists = await BusinessHour.findBy('weekday', weekday)
+      const businesshourExists = await BusinessHour.findBy({
+      "user_id": auth.user.id,
+      "weekday": weekday
+    })
+
       if (businesshourExists) {
         return response.status(401).send('Esse dia já tem horário definido')
       }
